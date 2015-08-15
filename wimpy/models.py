@@ -28,6 +28,12 @@ class Model(object):
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
+    def __repr__(self):
+        return '{}({})'.format(self.__class__.__name__,
+                               ', '.join('{}={}'.format(k, repr(v)) \
+                                         for k, v in self.__dict__.iteritems() \
+                                         if not k.startswith('_')))
+
 
 class Album(Model):
 
